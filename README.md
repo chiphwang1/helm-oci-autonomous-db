@@ -62,14 +62,14 @@ This Helm chart relies on the OCI Service Operator for Kubernetes (OSOK) and it 
      
    **Important Note**
  
- Uninstalling the helm chart will only remove the autonomousdatabase resource from the cluster and not from OCI. You will need to use the console or the OCI cli to remove the MDS from OCI. This is to prevent accidental deletion of the database.
+ Uninstalling the helm chart will only remove the ATP resource from the cluster and not from OCI. You will need to use the console or the OCI cli to remove the MATP from OCI. This is to prevent accidental deletion of the database.
 
      
   **Notes/Issues:**
  
  Provisioning the Autonomous Database (ATP) can take up to 5 minutes. 
  
- To confirm that the MDS is active run the following command and check the status of the MDS system.
+ To confirm that the ATP is active run the following command and check the status of the ATP system.
 
 ```sh
 $ kubectl -n <name of namespace> get autonomousdatabases -o wide
@@ -94,9 +94,20 @@ Once the the Autonomous Database (ATP) is ready, a secret with name defined in v
 | `user_name`        | Pre-provisioned DB ADMIN Username.                                       | string |
 
 
-```
-**1. You can extract the wallet files with the check_autodb.py in the python directory
-     
+
+**1. You can extract the wallet files with the check_autodb.py script in the python directory. Modify the followung variables priot to running the script.
+
+*** path to write wallet files to
+path = (" ")
+
+*** namespace where Autonomous Database was deployed
+namespace =('')
+
+*** secret_name is the name assigned to the secret defined in values.yaml file wallet.walletName
+secret_name = ('')
+
+
+```     
      cd ./python
      python3 check_autodb.py
 ```
