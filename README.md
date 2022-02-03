@@ -100,7 +100,7 @@ Once the the Autonomous Database (ATP) is ready, a secret with name defined in v
 path to write wallet files  
 **path = (" ")**
 
-namespace where Autonomous Database was deployed. 
+namespace where Autonomous Database was deployed   
 **namespace =('')**
 
 secret_name is the name assigned to the secret defined in values.yaml file wallet.walletName  
