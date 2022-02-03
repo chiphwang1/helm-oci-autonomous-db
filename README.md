@@ -132,9 +132,11 @@ You may want to run the Python script inside the Kubernetes cluster and make the
      
 ```
 
-**2. Deploy conatiner image into a Kubernetes cluster**. 
+**3. Deploy container image into a Kubernetes cluster**. 
 
-One way to use the script is an init container for the application container in a Kuberenetes pod. The init container will run first and when the ATP is ready it will write the wallet files to a location that is accessible to the 
+One way to use the packaged Python script is as an init container for the application container in a Kuberenetes pod. The init container will run first and when the ATP is ready it will write the wallet files to a location that is accessible to the application container.
+
+Since the Kubernetes pod will be contacting the Kubernetes API server to check for the creation of secrets the approproiate permissions need to the assigned to the pod. In the templates directory, the role.yaml, the role-binding.yaml file assigns the permissions to access secrets to the internal-kubectl service account. This service account will need to be assigned to the Kubernetes pod to allow it to read secrets from the Kubernetes API server.
 
 
 
