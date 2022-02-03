@@ -77,6 +77,8 @@ NAME            DISPLAYNAME     DBWORKLOAD   STATUS   OCID                      
 autodbtest301   autodbtest301   OLTP         Active   ocid1.autonomousdatabase.oc1.iad.anuwcljsnlc5nbyazyyzlqxytdmghb5eyafntqnxq6cupu3zmxf6jihz6vna   28m
 ```
 
+ ***Accessing the Database:***
+
 Once the the Autonomous Database (ATP) is ready, a secret with name defined in values.yaml file under wallet.walletName will be created to expose the wallet files that is required to connect to the ATP.
 
 
