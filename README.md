@@ -139,6 +139,31 @@ One way to use the packaged Python script is as an init container for the applic
 Since the Kubernetes pod will be contacting the Kubernetes API server to check for the creation of secrets the approproiate permissions need to the assigned to the pod. In the templates directory, the role.yaml, the role-binding.yaml file assigns the permissions to access secrets to the internal-kubectl service account. This service account will need to be assigned to the Kubernetes pod to allow it to read secrets from the Kubernetes API server.
 
 
+```
+
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: frontend
+  strategy:
+    type: Recreate    
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: frontend
+    spec:
+      **serviceAccountName: internal-kubectl**
+
+```
 
 
 
