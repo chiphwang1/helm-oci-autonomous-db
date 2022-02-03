@@ -44,8 +44,8 @@ This Helm chart relies on the OCI Service Operator for Kubernetes (OSOK) and it 
      --set walletPassword=<database password> \
        <name for this install> .
   
-  **Example:**
-  helm -n autodb  --set dbPassword=Admin!2345  --set walletPassword=Admin!2345 autodb .
+  ***Example:***
+     helm -n autodb  --set dbPassword=Admin!2345  --set walletPassword=Admin!2345 autodb .
   
  The password must be between 8 and 32 characters long, and must contain at least 1 numeric character, 1 lowercase character, 1 uppercase character, and 1   special (nonalphanumeric) character.
 
