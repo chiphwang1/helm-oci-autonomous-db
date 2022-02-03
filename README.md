@@ -18,6 +18,7 @@ This Helm chart relies on the OCI Service Operator for Kubernetes (OSOK) and it 
 - [OCI Service Operator for Kuberntes (OSOK) deployed in the cluster](https://github.com/oracle/oci-service-operator/blob/main/docs/installation.md)
 - [kubectl installed and using the context for the Kubernetes cluster where the MDS resource will be deployed](https://kubernetes.io/docs/tasks/tools/)
 - [Helm installed](https://helm.sh/docs/intro/install/)
+- [Docker installed](https://docs.docker.com/engine/install/)
 
 
 ##  Getting Started
@@ -99,7 +100,7 @@ Once the the Autonomous Database (ATP) is ready, a secret with name defined in v
 
 The script will check for the creation of the secret. It will check every 5 seconds until the secret is created and then write the files to a designated directory. Modify the following variables in the script before running.  
 
-**path to write wallet files**. 
+**path to write wallet files**.   
 path = (' ')
 
 **namespace where Autonomous Database was deployed**.   
@@ -116,11 +117,19 @@ secret_name = ('')
 
 **2.Packaging the Python script into a contaimer image .**.
 
-You may want to run the Python script inside the Kubernetes cluster and make the wallet files available to your application to access the ATP.The script will need to be packaged into a container image before it can run in a Kubernetes cluster. You will need to modify the variables to read from enviornmental variables in the script before building the image. This is described in the script.The variables can then be passed to the container as env variables when the container is deployed.
+You may want to run the Python script inside the Kubernetes cluster and make the wallet files available to your application to access the ATP.The script will need to be packaged into a container image before it can run in a Kubernetes cluster. You will need to modify the variables to read from enviornmental variables in the script before building the image. This is described in the Python script. The variables can then be passed to the container as env variables when the container is deployed.
 
 ```     
+     **Build Image**
      cd ./python
-     python3 check_autodb.py
+     docker build -t <repository>/<name of image>:<tag> .
+     
+     example:
+     docker build -t docker build -t chiphwang/checkautodb:1.9 .  . 
+     
+     **Push Image into Repo**
+     docker push docker build -t chiphwang/checkautodb:1.9 . 
+     
 ```
 
 
