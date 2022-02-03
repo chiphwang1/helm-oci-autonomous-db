@@ -95,6 +95,11 @@ Once the the Autonomous Database (ATP) is ready, a secret with name defined in v
 
 
 ```
+**1. You can extract the wallet files with the check_autodb.py in the python directory
+     
+     cd ./python
+     python3 check_autodb.py
+
  
 
 ## ATP value.yaml Specification
