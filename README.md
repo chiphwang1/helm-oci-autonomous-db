@@ -97,23 +97,31 @@ Once the the Autonomous Database (ATP) is ready, a secret with name defined in v
 
 **1. You can extract the wallet files with the check_autodb.py script in the python directory.**. 
 
-Modify the following variables in the script prior to running the script.
+The script will check for the creation of the secret. It will check every 5 seconds until the secret is created and then write the files to a designated directory. Modify the following variables in the script before running.  
 
-path to write wallet files  
-**path = (' ')**
+**path to write wallet files**. 
+path = (' ')
 
-namespace where Autonomous Database was deployed   
-**namespace =('')**
+**namespace where Autonomous Database was deployed**.   
+namespace =('')
 
-secret_name is the name assigned to the secret defined in values.yaml file wallet.walletName  
-**secret_name = ('')**
+**secret_name is the name assigned to the secret defined in values.yaml file wallet.walletName**   
+secret_name = ('')
 
 
 ```     
      cd ./python
      python3 check_autodb.py
 ```
-**2. You can extract the wallet files with the check_autodb.py script in the python directory.**.
+
+**2.Packaging the Pyton script into a contaimer image .**.
+
+You may want to run the Python script inside the Kubernetes cluster and make the wallet files available to your application to access the ATP. You will need to package the Python script into a container image before it can be run in the cluster. A sample Dockerfile is in the python directory that can be used to build the image. You will need to modify the variables to read from enviornmental variables
+
+```     
+     cd ./python
+     python3 check_autodb.py
+```
 
 
 ## ATP value.yaml Specification
