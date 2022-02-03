@@ -99,7 +99,7 @@ Once the the Autonomous Database (ATP) is ready, a secret with name defined in v
      
      cd ./python
      python3 check_autodb.py
-
+```
  
 
 ## ATP value.yaml Specification
