@@ -125,12 +125,19 @@ You may want to run the Python script inside the Kubernetes cluster and make the
      docker build -t <repository>/<name of image>:<tag> .
      
      example:
-     docker build -t docker build -t chiphwang/checkautodb:1.9 .  . 
+     docker build -t docker build -t chiphwang/checkautodb:1.9 .  
      
      **Push Image into Repo**
-     docker push docker build -t chiphwang/checkautodb:1.9 . 
+     docker push docker build -t chiphwang/checkautodb:1.9 
      
 ```
+
+**2. Deploy conatiner image into a Kubernetes cluster**. 
+
+One way to use the script is an init container for the application container in a Kuberenetes pod. The init container will run first and when the ATP is ready it will write the wallet files to a location that is accessible to the 
+
+
+
 
 
 ## ATP value.yaml Specification
