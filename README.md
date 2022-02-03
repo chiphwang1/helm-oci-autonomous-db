@@ -115,7 +115,7 @@ secret_name = ('')
      python3 check_autodb.py
 ```
 
-**2.Packaging the Python script into a contaimer image .**.
+**2.Packaging the Python script into a contaimer image **.
 
 You may want to run the Python script inside the Kubernetes cluster and make the wallet files available to your application to access the ATP.The script will need to be packaged into a container image before it can run in a Kubernetes cluster. You will need to modify the variables to read from enviornmental variables in the script before building the image. This is described in the Python script. The variables can then be passed to the container as env variables when the container is deployed.
 
