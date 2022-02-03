@@ -97,13 +97,13 @@ Once the the Autonomous Database (ATP) is ready, a secret with name defined in v
 
 **1. You can extract the wallet files with the check_autodb.py script in the python directory. Modify the followung variables priot to running the script.***
 
-***path to write wallet files to***
+path to write wallet files
 path = (" ")
 
-***namespace where Autonomous Database was deployed***
+namespace where Autonomous Database was deployed
 namespace =('')
 
-***secret_name is the name assigned to the secret defined in values.yaml file wallet.walletName***
+secret_name is the name assigned to the secret defined in values.yaml file wallet.walletName
 secret_name = ('')
 
 
