@@ -97,7 +97,7 @@ def main():
     read from environment variables and pass variables to container
     as env varaibles
     Example:
-    namespace =  os.getenv('nameespace')
+    namespace =  os.getenv('namespace')
     path = os.getenv('path')
     secret_name = ('secret_name')
     """
