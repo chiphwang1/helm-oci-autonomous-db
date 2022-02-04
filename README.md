@@ -117,7 +117,9 @@ secret_name = ('')
 
 **2. Package the Python script into a conatiner image**. 
 
-You may want to run the Python script inside the Kubernetes cluster and make the wallet files available to your application to access the ATP. The script will need to be packaged into a container image before running in a Kubernetes cluster. Before building the image, you will need to modify the variables to read from environmental variables in the script. The variables can then be passed to the container as env variables when deployed.
+You may want to run the Python script inside the Kubernetes cluster and make the wallet files available to your application to access the ATP. The script will need to be packaged into a container image before running in a Kubernetes cluster. Before building the image, you will need to modify the variables to read from environmental variables in the script. The variables can then be passed to the container as env variables when deployed. This is detailked in the comments of the script.
+
+
 
 ```     
      **Build Image**
