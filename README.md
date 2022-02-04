@@ -246,7 +246,7 @@ The Complete Specification of the `AutonomousDatabase` Custom Resource (CR) is a
 
 **4. To retrive the wallet password of the Autonomous Database System run the following command**
      
-    kubectl -n   <autonomousdatabase>   get secret {{ .Values.walletName}} -o  jsonpath="{.data.walletPassword}" | base64 --decode
+    kubectl -n   <autonomousdatabase>   get secret <name of wallet secret>  -o  jsonpath="{.data.walletPassword}" | base64 --decode
 
 
 
