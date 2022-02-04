@@ -172,7 +172,7 @@ spec:
         - name: namespace
           value: {{ .Release.Namespace }}
         - name: path
-          value: '/wallet'  # shared mount point for accessible by init-container and application container
+          value: '/wallet'  # shared mount point accessible by init-container and application container
         - name: secret_name
           value: {{ .Values.walletName }}
         volumeMounts:
@@ -194,7 +194,7 @@ spec:
           name: wordpress
         volumeMounts:
         - name: wallet
-          mountPath: /wallet  # shared mount point for accessible by init-container and application container
+          mountPath: /wallet  # shared mount point accessible by init-container and application container
       volumes:
       - name: wallet # shared volume accessible by init-container adn application container
         emptyDir: {}
