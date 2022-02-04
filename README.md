@@ -138,6 +138,10 @@ One way to use the packaged Python script is as an init container for the applic
 
 Since the Kubernetes pod will be contacting the Kubernetes API server to check for the creation of secrets the approproiate permissions need to the assigned to the pod. In the templates directory, the role.yaml, the role-binding.yaml file assigns the permissions to access secrets to the internal-kubectl service account. This service account will need to be assigned to the Kubernetes pod to allow it to read secrets from the Kubernetes API server.
 
+In the following exmaple, the pods in the dwployment are assigned the service account internal-kubectl which has the permission to contact the Kubernetes api server to read secrets.
+
+The init-container and the application container has the wallet volume mounted. Both containers has access to the directory. The init-container will run the Python script and write the wallet files to the wallet volume where it can accessed by the application container.
+
 
 ```
 
@@ -161,7 +165,42 @@ spec:
         app: wordpress
         tier: frontend
     spec:
-      **serviceAccountName: internal-kubectl**
+      serviceAccountName: internal-kubectl
+      initContainers:
+      - name: db-init
+        image: chiphwang/checkautodb:1.9 
+        command: [ "sh", "-c", "python check_autodb.py" ]
+        env:
+        - name: namespace
+          value: {{ .Release.Namespace }}
+        - name: path
+          value: '/tmp/host'
+        - name: secret_name
+          value: {{ .Values.walletName }}
+        volumeMounts:
+        - name: wallet
+          mountPath: /wallet
+      containers:
+      - image: {{ .Values.wordpressImageName}}
+        name: wordpress
+        command: [ "/bin/bash", "-c", "source /tmp/host/launch.sh && docker-entrypoint.sh apache2-foreground" ]
+        env:
+        - name: WORDPRESS_DB_PASSWORD
+          value: {{ .Values.database.password }} 
+        - name: WORDPRESS_DB_NAME
+          value: {{ .Values.DBName }} 
+        - name: WORDPRESS_DB_USER
+          value: {{ .Values.database.username }} 
+        ports:
+        - containerPort: 80
+          name: wordpress
+        volumeMounts:
+        - name: wallet
+          mountPath: /wallet
+      volumes:
+      - name: wallet
+        emptyDir: {}
+
 
 ```
 
