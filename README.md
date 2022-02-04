@@ -234,29 +234,24 @@ The Complete Specification of the `AutonomousDatabase` Custom Resource (CR) is a
 ## Useful commands 
 
 
-**1. To check the status of the MySQL DB System run the following command**
+**1. To check the status of the Autonomous Database System run the following command**
      
-     kubectl -n <namespace of mysqldbsystem> get mysqldbsystems -o wide
+     kubectl -n <namespace of autonomousdatabase> get autonomousdatabases -o wide
 
-**2. To describe the MySQL DB System run the following command** 
+**2. To describe the  Autonomous Database System  run the following command** 
      
-     kubectl -n <namespace of mysqldbsystem> describe mysqldbsystems <name of mysqldbsystem>
+     kubectl -n <namespace of autonomousdatabase> describe autonomousdatabases 
 
-**3. To retreive the OCID of MySQL DB System run the following command** 
+**3. To retreive the OCID of Autonomous Database System run the following command** 
 
-      kubectl -n <namespace of mysqldbsystem> get mysqldbsystems <name of mysqldbsystem> -o jsonpath="{.items[0].status.status.ocid}"
- 
-**4. To retrive the admin username of the MySQL DB System run the following command**
+      kubectl -n <namespace of autonomousdatabase> get autonomousdatabase <name of mysqldbsystem> -o jsonpath="{.items[0].status.status.ocid}
+      
+
+**4. To retrive the wallet password of the Autonomous Database System run the following command**
      
-     kubectl -n  <namespace of mysqldbsystem>  get secret mysqlsecret -o  jsonpath="{.data.username}" | base64 --decode
+    kubectl -n   <autonomousdatabase>   get secret {{ .Values.walletName}} -o  jsonpath="{.data.walletPassword}" | base64 --decode
 
-**5. To retrive the admin password of the MySQL DB System run the following command**
-     
-     kubectl -n  <namespace of mysqldbsystem>  get secret mysqlsecret -o  jsonpath="{.data.password}" | base64 --decode
 
-**6. To retreive endpoint information for the MySQL DB System run the following command**
-     
-     kubectl -n <namespace of mysqldbsystem> get secret <name of the MySQL DB System>  -o jsonpath='{.data.Endpoints}' | base64 --decode
 
 
 
