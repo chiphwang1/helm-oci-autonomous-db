@@ -134,11 +134,11 @@ You may want to run the Python script inside the Kubernetes cluster and make the
 
 **3. Deploy container image into a Kubernetes cluster**. 
 
-One way to use the packaged Python script is as an init container for the application container in a Kuberenetes pod. The init container will run first and when the ATP is ready it will write the wallet files to a location that is accessible to the application container.
+One way to use the packaged Python script is as an init-container for the application container in a Kuberenetes pod. The init-container will run and when the ATP is ready it will write the wallet files to a location that is accessible to the application container.
 
 Since the Kubernetes pod will be contacting the Kubernetes API server to check for the creation of secrets the approproiate permissions need to the assigned to the pod. In the templates directory, the role.yaml, the role-binding.yaml file assigns the permissions to access secrets to the internal-kubectl service account. This service account will need to be assigned to the Kubernetes pod to allow it to read secrets from the Kubernetes API server.
 
-In the following exmaple, the pods in the dwployment are assigned the service account internal-kubectl which has the permission to contact the Kubernetes api server to read secrets.
+In the following exmaple, the pods in the deployment are assigned the service account internal-kubectl which has the permission to contact the Kubernetes api server to read secrets.
 
 The init-container and the application container has the wallet volume mounted. Both containers has access to the directory. The init-container will run the Python script and write the wallet files to the wallet volume where it can accessed by the application container.
 
