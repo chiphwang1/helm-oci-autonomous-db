@@ -163,16 +163,16 @@ spec:
         app: wordpress
         tier: frontend
     spec:
-      serviceAccountName: internal-kubectl
+      serviceAccountName: internal-kubectl # service acccount with permission to read secrets from the cluster
       initContainers:
       - name: db-init
-        image: chiphwang/checkautodb:1.9 
-        command: [ "sh", "-c", "python check_autodb.py" ]
+        image: chiphwang/checkautodb:1.9  # image with the packaged python script
+        command: [ "sh", "-c", "python check_autodb.py" ] # command to run the python script
         env:
         - name: namespace
           value: {{ .Release.Namespace }}
         - name: path
-          value: '/tmp/host'
+          value: '/wallet'  # shared mount point for accessible by init-container and application container
         - name: secret_name
           value: {{ .Values.walletName }}
         volumeMounts:
@@ -194,9 +194,9 @@ spec:
           name: wordpress
         volumeMounts:
         - name: wallet
-          mountPath: /wallet
+          mountPath: /wallet  # shared mount point for accessible by init-container and application container
       volumes:
-      - name: wallet
+      - name: wallet # shared volume accessible by init-container adn application container
         emptyDir: {}
 
 
