@@ -111,8 +111,8 @@ secret_name = ('')
 
 
 ```     
-     cd ./python
-     python3 check_autodb.py
+   $  cd ./python
+   $  python3 check_autodb.py
 ```
 
 **2. Package the Python script into a conatiner image**. 
