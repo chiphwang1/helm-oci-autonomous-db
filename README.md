@@ -16,7 +16,7 @@ This Helm chart relies on the OCI Service Operator for Kubernetes (OSOK), and it
 
 - A Kuberntes cluster deployed in OCI 
 - [OCI Service Operator for Kuberntes (OSOK) deployed in the cluster](https://github.com/oracle/oci-service-operator/blob/main/docs/installation.md)
-- [kubectl installed and using the context for the Kubernetes cluster where the MDS resource will be deployed](https://kubernetes.io/docs/tasks/tools/)
+- [kubectl installed and using the context for the Kubernetes cluster where the ATP resource will be deployed](https://kubernetes.io/docs/tasks/tools/)
 - [Helm installed](https://helm.sh/docs/intro/install/)
 - [Docker installed](https://docs.docker.com/engine/install/)
 
@@ -34,7 +34,7 @@ This Helm chart relies on the OCI Service Operator for Kubernetes (OSOK), and it
 **3. Populate the values.yaml file with information to deploy the Autonomous Database resource**
 
 
-**4. Create the namespace where the MDS resource will be deployed**
+**4. Create the namespace where the ATP resource will be deployed**
 
      kubectl create ns <namespace name>
 
