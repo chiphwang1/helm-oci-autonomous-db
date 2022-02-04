@@ -256,6 +256,7 @@ The Complete Specification of the `AutonomousDatabase` Custom Resource (CR) is a
 - [OCI Service Operator for Kuberntes (OSOK) deployed in the cluster](https://github.com/oracle/oci-service-operator)
 - [OCI Autonomous Database Serice OSOK](https://github.com/oracle/oci-service-operator/blob/main/docs/adb.md)
 - [Oracle Autonomous Database](https://www.oracle.com/database/what-is-autonomous-database/)
+- [Developing Python Applications for Oracle ATP](https://www.oracle.com/database/technologies/appdev/python/quickstartpython.html)
 
 
 ## License
