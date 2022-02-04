@@ -6,10 +6,10 @@
 
 ## Introduction
 
-This Helm Chart makes it easy to create and manage an Autonmous Database (ATP) from a Kubernetes cluster deployed within Oracle CLoud Infrastrcuture (OCI). The Kubernetes cluster can be a cluster deployed using Oracle Container Engine for Kuberntes (OKE), or it can be a customer managed cluster deployed on virtual machine instances.
+This Helm Chart makes it easy to create and manage an Autonomous Database (ATP) from a Kubernetes cluster deployed within Oracle Cloud Infrastructure (OCI). The Kubernetes cluster can be deployed using Oracle Container Engine for Kubernetes (OKE) or a customer-managed cluster deployed on virtual machine instances.
 
 
-This Helm chart relies on the OCI Service Operator for Kubernetes (OSOK) and it is a pre-requisite to have OSOK deployed within the cluster to use this Helm chart.
+This Helm chart relies on the OCI Service Operator for Kubernetes (OSOK), and it is a pre-requisite to have OSOK deployed within the cluster to use this Helm chart.
 
 
 ## Pre-requisites
@@ -63,14 +63,14 @@ The password must be between 8 and 32 characters long, and must contain at least
      
    **Important Note**
  
- Uninstalling the helm chart will only remove the ATP resource from the cluster and not from OCI. You will need to use the console or the OCI cli to remove the MATP from OCI. This is to prevent accidental deletion of the database.
+Uninstalling the helm chart will only remove the ATP resource from the cluster and not OCI. You will need to use the console or the OCI CLI to remove the ATP from OCI. This function is to prevent accidental deletion of the database.
 
      
   **Notes/Issues:**
  
  Provisioning the Autonomous Database (ATP) can take up to 5 minutes. 
  
- To confirm that the ATP is active run the following command and check the status of the ATP system.
+ To confirm that the ATP is active, run the following command and check the status of the ATP system.
 
 ```sh
 $ kubectl -n <name of namespace> get autonomousdatabases -o wide
@@ -80,7 +80,7 @@ autodbtest301   autodbtest301   OLTP         Active   ocid1.autonomousdatabase.o
 
  ***Accessing the Database:***
 
-Once the the Autonomous Database (ATP) is ready, a secret with name defined in values.yaml file under wallet.walletName will be created to expose the wallet files that is required to connect to the ATP.
+Once the  ATP is ready, a secret with a name that is defined in values.yaml file under wallet.walletName will be created to expose the wallet files required to connect to the ATP.
 
 
 | Parameter          | Description                                                              | Type   |
@@ -117,7 +117,7 @@ secret_name = ('')
 
 **2. Package the Python script into a conatiner image**. 
 
-You may want to run the Python script inside the Kubernetes cluster and make the wallet files available to your application to access the ATP.The script will need to be packaged into a container image before it can run in a Kubernetes cluster. You will need to modify the variables to read from enviornmental variables in the script before building the image. This is described in the Python script. The variables can then be passed to the container as env variables when the container is deployed.
+You may want to run the Python script inside the Kubernetes cluster and make the wallet files available to your application to access the ATP. The script will need to be packaged into a container image before running in a Kubernetes cluster. Before building the image, you will need to modify the variables to read from environmental variables in the script. The variables can then be passed to the container as env variables when deployed.
 
 ```     
      **Build Image**
@@ -134,14 +134,11 @@ You may want to run the Python script inside the Kubernetes cluster and make the
 
 **3. Deploy container image into a Kubernetes cluster**. 
 
-One way to use the packaged Python script is as an init-container for the application container in a Kuberenetes pod. The init-container will run and when the ATP is ready it will write the wallet files to a location that is accessible to the application container.
+One way to use the packaged Python script is to use it in an init-container for the application container in a Kubernetes pod. The init-container will run, and when the ATP is ready, it will write the wallet files to a location that is accessible to the application container.
 
-Since the Kubernetes pod will be contacting the Kubernetes API server to check for the creation of secrets the approproiate permissions need to the assigned to the pod. In the templates directory, the role.yaml, the role-binding.yaml file assigns the permissions to access secrets to the internal-kubectl service account. This service account will need to be assigned to the Kubernetes pod to allow it to read secrets from the Kubernetes API server.
+Since the Kubernetes pod will be contacting the Kubernetes API server to check for the creation of secrets, the appropriate permissions need to the assigned to the pod. In the templates directory, the role.yaml, the role-binding.yaml file sets the permissions to access secrets to the internal-kubectl service account. This service account will need to be assigned to the Kubernetes pod to read secrets from the Kubernetes API server.
 
-In the following exmaple, the pods in the deployment are assigned the service account internal-kubectl which has the permission to contact the Kubernetes api server to read secrets.
-
-The init-container and the application container has the wallet volume mounted. Both containers has access to the directory. The init-container will run the Python script and write the wallet files to the wallet volume where it can accessed by the application container.
-
+In the following example, the pods in the deployment are assigned the service account internal-kubectl, which has permission to contact the Kubernetes API server to read secrets. The init-container and the application container have the wallet volume mounted and is accessible to both. The init-container will run the Python script and write the wallet files to the wallet volume, where the application container can read the files
 ```
 
 apiVersion: apps/v1 
