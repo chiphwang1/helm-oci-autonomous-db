@@ -5,7 +5,7 @@
 # name assigned to autonomousdatabases resource (Required)
 name: autodbtest301
 # OCID of compartment to create the autonomousdatabase (Required)
-compartmentId: ocid1.compartment.oc1..aaaaaaaajvufatmqa23teaeo7zx7tg5zwze4qlznqrpbuqach7vdhyafweda
+compartmentId: 
 # Name assigned to the autonomousdatabase in OCI (Required)
 DBName: autodbtest301
 # OLTP or DW (Required)
