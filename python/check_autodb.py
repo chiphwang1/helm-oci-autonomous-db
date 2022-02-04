@@ -95,7 +95,7 @@ def main():
     """ 
     if script is run in Kubernetes pod change variables to
     read from environment variables and pass variables to container
-    as env varaibles
+    as env varaibles in Kubernetes manifest definitions
     Example:
     namespace =  os.getenv('namespace')
     path = os.getenv('path')
