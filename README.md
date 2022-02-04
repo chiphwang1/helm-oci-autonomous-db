@@ -165,7 +165,7 @@ spec:
         app: wordpress
         tier: frontend
     spec:
-      serviceAccountName: internal-kubectl
+    <font color="red">serviceAccountName: internal-kubectl</font>
       initContainers:
       - name: db-init
         image: chiphwang/checkautodb:1.9 
