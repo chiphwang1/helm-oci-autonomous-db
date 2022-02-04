@@ -83,7 +83,7 @@ def main():
     """
     namespace: namespace where AutonmousDB resource is created
     secret_name: define in values.yaml wallet.walletName
-    path: path to write wallet
+    path: path to write wallet files
     """
 
     namespace =('test300') # leave blank if default namespace or if running from inside Kubernetes cluster
