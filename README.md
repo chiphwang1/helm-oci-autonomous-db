@@ -263,11 +263,12 @@ The Complete Specification of the `AutonomousDatabase` Custom Resource (CR) is a
 ## Additional Resources
 
 - [OCI Service Operator for Kuberntes (OSOK) deployed in the cluster](https://github.com/oracle/oci-service-operator)
-- [MySQL SB System Service](https://www.oracle.com/mysql/)
+- [OCI Autonomous Database Serice OSOK](https://github.com/oracle/oci-service-operator/blob/main/docs/adb.md)
+- [Oracle Autonomous Database](https://www.oracle.com/database/what-is-autonomous-database/)
 
 
 ## License
-Copyright (c) 2021 Oracle and/or its affiliates.
+Copyright (c) 2022 Oracle and/or its affiliates.
 
 Licensed under the Universal Permissive License (UPL), Version 1.0.
 
