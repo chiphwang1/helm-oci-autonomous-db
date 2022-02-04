@@ -22,7 +22,7 @@ cpuCoreCount: 2
 isAutoScalingEnabled: false
 # Indicates if this is an Always Free resource. (Defaults to false)
 isFreeTier: false
-# LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE ( Defaults to BRING_YOUR_OWN_LICENSE)
+# LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE ( Defaults to ICENSE_INCLUDED)
 licenseModel: 
 wallet:
   # walletName (Required)
