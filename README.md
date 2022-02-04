@@ -134,7 +134,7 @@ You may want to run the Python script inside the Kubernetes cluster and make the
      
 ```
 
-**3. Deploy container image into a Kubernetes cluster**. 
+**3. Deploy the container image into a Kubernetes cluster**. 
 
 One way to use the packaged Python script is to use it in an init-container for the application container in a Kubernetes pod. The init-container will run, and when the ATP is ready, it will write the wallet files to a location that is accessible to the application container.
 
