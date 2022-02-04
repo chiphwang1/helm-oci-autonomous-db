@@ -204,9 +204,6 @@ spec:
 
 ```
 
-
-## ATP value.yaml Specification
-
 ## Autonomous Database Specification Parameters
 
 The Complete Specification of the `AutonomousDatabase` Custom Resource (CR) is as detailed below:
