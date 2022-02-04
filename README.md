@@ -42,7 +42,7 @@ This Helm chart relies on the OCI Service Operator for Kubernetes (OSOK), and it
 
      helm -n <namespace name> install \
      --set dbPassword=<database password> \  
-     --set walletPassword=<database password> \
+     --set walletPassword=<wallet password> \
        <name for this install> .
   
   ***Example:***
