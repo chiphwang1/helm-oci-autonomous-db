@@ -143,7 +143,6 @@ In the following exmaple, the pods in the dwployment are assigned the service ac
 The init-container and the application container has the wallet volume mounted. Both containers has access to the directory. The init-container will run the Python script and write the wallet files to the wallet volume where it can accessed by the application container.
 
 
-```
 
 apiVersion: apps/v1 
 kind: Deployment
@@ -202,7 +201,7 @@ spec:
         emptyDir: {}
 
 
-```
+
 
 
 
